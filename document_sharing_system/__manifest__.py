@@ -26,7 +26,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/doc_sharing.xml',
-        'views/doc_category.xml'
+        # 'views/doc_category.xml'
         # 'views/diary.xml',
         # 'views/project.xml',
         # 'views/requirement.xml',
