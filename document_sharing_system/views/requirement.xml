@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+      <record model="ir.ui.view" id="requirement_tree">
+          <field name="name">requirement_tree</field>
+          <field name="model">requirement</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="project_id"/>
+                  <field name="start_date"/>
+                  <field name="stop_date"/>
+                  <field name="state"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="requirement_form" model="ir.ui.view">
+          <field name="name">requirement_form</field>
+          <field name="model">requirement</field>
+          <field name="arch" type="xml">
+              <form>
+                  <header>
+                      <field name="state" widget="statusbar" statusbar_visible="draft,develop,check,done"/>
+                  </header>
+                  <sheet>
+                      <group>
+                          <field name="name" required="1"/>
+                          <field name="project_id" required="1"/>
+                          <field name="start_date"/>
+                          <field name="stop_date"/>
+                          <field name="description"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="requirement_search" model="ir.ui.view">
+          <field name="name">requirement_search</field>
+          <field name="model">requirement</field>
+          <field name="arch" type="xml">
+              <search>
+                  <field name="name"/>
+                  <field name="project_id"/>
+                  <field name="description"/>
+                  <group string="分组">
+                      <filter string="装填" context="{'group_by':'state'}"/>
+                  </group>
+              </search>
+          </field>
+      </record>
+
+      <record id="requirement_act" model="ir.actions.act_window">
+          <field name="name">需求</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">requirement</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+      <menuitem name="需求" id="requirement_menu" parent="project_first_menu" action="requirement_act" sequence="2"/>
+  </data>
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+      <record model="ir.ui.view" id="doc_category_tree">
+          <field name="name">doc_category_tree</field>
+          <field name="model">doc.category</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="doc_category_form" model="ir.ui.view">
+          <field name="name">doc_category_form</field>
+          <field name="model">doc.category</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+                          <group>
+                              <field name="name"/>
+                          </group>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="doc_category_search" model="ir.ui.view">
+          <field name="name">doc_category_search</field>
+          <field name="model">doc.category</field>
+          <field name="arch" type="xml">
+              <search>
+                  <field name="name"/>
+              </search>
+          </field>
+      </record>
+
+      <record id="doc_category_act" model="ir.actions.act_window">
+          <field name="name">文档分享</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">doc.category</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+      <menuitem name="类别" id="doc_category_menu" parent="doc_first_menu" action="doc_category_act" sequence="2"/>
+
+  </data>
+</odoo>

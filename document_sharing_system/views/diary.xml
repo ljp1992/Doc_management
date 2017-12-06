@@ -1,0 +1,54 @@
+<odoo>
+  <data>
+      <record model="ir.ui.view" id="diary_tree">
+          <field name="name">diary_tree</field>
+          <field name="model">diary</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="date"/>
+                  <field name="content"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="diary_form" model="ir.ui.view">
+          <field name="name">diary_form</field>
+          <field name="model">diary</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+                          <field name="name"/>
+                          <field name="date"/>
+                          <field name="content"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="diary_search" model="ir.ui.view">
+          <field name="name">diary_search</field>
+          <field name="model">diary</field>
+          <field name="arch" type="xml">
+              <search>
+                  <field name="name"/>
+                  <field name="content"/>
+              </search>
+          </field>
+      </record>
+
+      <record id="diary_act" model="ir.actions.act_window">
+          <field name="name">日记</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">diary</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+      <menuitem name="日记" id="diary_root_menu" sequence="1"/>
+          <menuitem name="日记" id="diary_first_menu" parent="diary_root_menu"  sequence="1"/>
+              <menuitem name="日记" id="diary_menu" parent="diary_first_menu" action="diary_act" sequence="1"/>
+  </data>
+</odoo>

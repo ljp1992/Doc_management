@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+      <record model="ir.ui.view" id="project_tree">
+          <field name="name">project_tree</field>
+          <field name="model">project</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"/>
+                  <field name="start_date"/>
+                  <field name="stop_date"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="project_form" model="ir.ui.view">
+          <field name="name">project_form</field>
+          <field name="model">project</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+                          <field name="name" required="1"/>
+                          <field name="start_date"/>
+                          <field name="stop_date"/>
+                          <field name="description"/>
+                      </group>
+                      <notebook>
+                          <page string="需求">
+                              <field name="requirement_ids">
+                                  <tree editable="bottom">
+                                      <field name="price_unit"/>
+                                      <field name="qty"/>
+                                      <field name="tax_amount"/>
+                                      <field name="price_total"/>
+                                      <field name="price_subtotal"/>
+                                  </tree>
+                              </field>
+                          </page>
+                      </notebook>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="project_search" model="ir.ui.view">
+          <field name="name">project_search</field>
+          <field name="model">project</field>
+          <field name="arch" type="xml">
+              <search>
+                  <field name="name"/>
+                  <field name="description"/>
+              </search>
+          </field>
+      </record>
+
+      <record id="project_act" model="ir.actions.act_window">
+          <field name="name">项目</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">project</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+      <menuitem name="项目管理" id="project_root_menu" sequence="4"/>
+          <menuitem name="项目管理" id="project_first_menu" parent="project_root_menu"  sequence="1"/>
+              <menuitem name="项目" id="project_menu" parent="project_first_menu" action="project_act" sequence="1"/>
+  </data>
+</odoo>
